@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    tool:context=".ui.activity.MainActivity">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="cn.tyhyh.easeword.ui.viewmodel.MainViewModel" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolBarHeight"
+            android:background="@color/colorPrimaryDark"
+            app:contentInsetStart="0dp"
+            app:contentInsetLeft="0dp">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:src="@drawable/ic_set"
+                android:background="@drawable/toolbar_left_btn_bg" />
+
+            <ImageButton
+                android:layout_gravity="end"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_search"
+                android:background="@drawable/toobar_right_btn_bg" />
+        </androidx.appcompat.widget.Toolbar>
+
+    </LinearLayout>
+</layout>

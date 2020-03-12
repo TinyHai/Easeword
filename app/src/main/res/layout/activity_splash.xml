@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tool:context=".ui.activity.SplashActivity">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/start_bg" />
+
+        <TextView
+            android:id="@+id/teText"
+            android:layout_gravity="top|end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:gravity="center"
+            android:lineSpacingExtra="6dp"
+            android:textSize="24sp"
+            android:ems="1"
+            android:textColor="@color/colorStartText"
+            android:text="易·字"
+            tool:text="易·字"/>
+
+        <TextView
+            android:id="@+id/bsText"
+            android:layout_gravity="bottom|start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginBottom="28dp"
+            android:gravity="center"
+            android:lineSpacingExtra="12dp"
+            android:textSize="24sp"
+            android:ems="1"
+            android:textColor="@color/colorStartText"
+            android:text="日月为易"
+            tool:text="日月为易"/>
+    </FrameLayout>
+</layout>
