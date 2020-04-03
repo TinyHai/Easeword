@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.activity.AboutActivity">
+
+    <cn.tyhyh.easeword.ui.custom.DynamicBgLinearLayout
+        android:id="@+id/dynamicBgContainer"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
+        app:moveSpeed="2dp"
+        app:drawOffsetTop="@dimen/toolBarHeight">
+
+        <include
+            android:id="@+id/toolbarBinding"
+            layout="@layout/common_toolbar" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="60"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                app:srcCompat="@mipmap/logo"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:minHeight="12dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sizeNormalText"
+                android:textColor="@color/colorCommonBlack"
+                android:text="@string/app_name"/>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="48"/>
+
+        <LinearLayout
+            android:layout_marginHorizontal="21dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/about_us_note_bg">
+
+            <TextView
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="22dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="2"
+                android:lineHeight="28dp"
+                android:gravity="center"
+                android:text="@string/about_us_note"
+                android:textSize="@dimen/sizeNormalText"
+                android:textColor="@color/colorCommonBlack" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="16dp"
+                android:textSize="12sp"
+                android:lineHeight="28dp"
+                android:textColor="#888888"
+                android:text="@string/start_date"/>
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="200"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="60dp"
+            android:paddingEnd="0dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:lines="2"
+                android:lineHeight="20dp"
+                android:text="@string/about_engineer_info"
+                android:textColor="@color/colorCommonBlack"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:lines="2"
+                android:lineHeight="20dp"
+                android:textColor="@color/colorCommonBlack"
+                android:text="设计师：青云银松\n1587013045@qq.com"/>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="60" />
+    </cn.tyhyh.easeword.ui.custom.DynamicBgLinearLayout>
+
+</layout>

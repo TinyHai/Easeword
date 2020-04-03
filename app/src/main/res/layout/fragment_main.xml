@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="cn.tyhyh.easeword.ui.viewmodel.MainFragViewModel" />
+    </data>
+
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:max="100"
+            android:progress="@{viewModel.unlockedPercent}"
+            android:progressDrawable="@drawable/word_progress_bar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            tools:progress="50" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/wordRecyclerView"
+            android:layout_marginTop="24dp"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_has_essay_word"/>
+
+    </LinearLayout>
+
+</layout>

@@ -1,9 +1,7 @@
 package cn.tyhyh.easeword.ui.activity
 
 import android.os.Bundle
-import android.view.View
-import androidx.databinding.DataBindingUtil
-import cn.tyhyh.easeword.R
+import androidx.core.view.postDelayed
 import cn.tyhyh.easeword.databinding.ActivitySplashBinding
 import cn.tyhyh.easeword.ui.activity.base.BaseActivity
 import cn.tyhyh.easeword.util.FontUtil
@@ -11,24 +9,25 @@ import cn.tyhyh.easeword.util.FontUtil
 class SplashActivity : BaseActivity() {
 
     companion object {
-        private const val DURING = 4000
+        private const val DURING = 2000
     }
 
     @Volatile
     private var startTime = 0L
 
+    @Volatile
     private lateinit var binding: ActivitySplashBinding
 
-    private val doCHeck = Runnable {
+    private val initialize = Runnable {
         val currentTimeMills = System.currentTimeMillis()
         val duration = currentTimeMills - startTime
-        findViewById<View>(android.R.id.content)
-            .postDelayed({ startHomeActivity() }, DURING - duration)
+        binding.root.postDelayed(DURING - duration) {startHomeActivity()}
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_splash)
+        binding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         binding.apply {
             FontUtil.setTypefaceForTextView(teText, FontUtil.YRDZS_PATH)
             FontUtil.setTypefaceForTextView(bsText, FontUtil.YRDZS_PATH)
@@ -37,11 +36,13 @@ class SplashActivity : BaseActivity() {
 
     private fun startHomeActivity() {
         MainActivity.actionStart(this)
+//        TestActivity.actionStart(this)
+        finish()
     }
 
     override fun onResume() {
         super.onResume()
         startTime = System.currentTimeMillis()
-        Thread(doCHeck).start()
+        Thread(initialize).start()
     }
 }

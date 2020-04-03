@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <FrameLayout
+        android:id="@+id/chapterItemContainer"
+        android:layout_width="match_parent"
+        android:layout_height="98dp"
+        android:paddingTop="18dp"
+        android:background="@drawable/item_chapter_container_bg"
+        android:clickable="true"
+        android:focusable="true"
+        android:clipToPadding="false">
+
+        <ImageView
+            android:id="@+id/lockedView"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="-18dp"
+            android:background="@drawable/item_locked_view_bg"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/ic_lock"/>
+
+        <ViewStub
+            android:id="@+id/selectChapterView"
+            android:layout_marginTop="-18dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center_horizontal|top"
+            android:layout="@layout/item_chapter_count" />
+
+        <TextView
+            android:id="@+id/previewText"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorChapterPreview"
+            android:textSize="24sp"/>
+    </FrameLayout>
+
+</layout>

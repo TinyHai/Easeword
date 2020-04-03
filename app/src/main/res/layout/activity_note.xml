@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.activity.NoteActivity">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="cn.tyhyh.easeword.ui.viewmodel.NoteViewModel" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
+        android:clickable="true"
+        android:background="@color/colorPrimaryDark">
+
+        <include
+            android:id="@+id/toolbarBinding"
+            layout="@layout/common_toolbar" />
+
+        <TextView
+            android:id="@+id/wordTv"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:lineHeight="103dp"
+            android:textSize="96sp"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="-24dp"
+            tools:text="天"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="26dp" />
+
+        <ScrollView
+            android:id="@+id/noteWrapper"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingTop="40dp"
+            android:paddingBottom="36dp"
+            android:background="@drawable/note_bg"
+            android:paddingHorizontal="30dp">
+
+            <cn.tyhyh.easeword.ui.custom.UnderlineEditView
+                android:id="@+id/contentEv"
+                tools:layout_marginHorizontal="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:maxLength="222"
+                android:text="@={viewModel.noteContent}"
+                android:lineSpacingExtra="20dp"
+                android:focusableInTouchMode="true" />
+
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/noteTextCountTv"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:textColor="@color/colorCommonBlack"
+            android:alpha="0.2"
+            android:text="@string/note_size_zero"
+            android:background="@android:color/transparent" />
+
+    </LinearLayout>
+
+</layout>

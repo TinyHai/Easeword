@@ -13,4 +13,11 @@
             <corners android:topLeftRadius="24dp" android:topRightRadius="0dp" android:bottomLeftRadius="24dp" android:bottomRightRadius="0dp" />
         </shape>
     </item>
+    <item android:bottom="1dp">
+        <ripple
+            android:color="#33000000"
+            android:radius="18dp">
+            <item android:drawable="@drawable/circle_r18dp" android:gravity="center" />
+        </ripple>
+    </item>
 </layer-list>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="title"
+            type="String" />
+        <variable
+            name="onTitleClick"
+            type="android.view.View.OnClickListener" />
+        <variable
+            name="titleDrawableEnd"
+            type="android.graphics.drawable.Drawable" />
+    </data>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolBarHeight"
+        app:contentInsetStart="0dp"
+        app:contentInsetLeft="0dp">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/leftBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:scaleType="centerInside"
+            android:background="@drawable/toolbar_left_btn_bg" />
+
+        <TextView
+            android:id="@+id/titleTv"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/colorCommonBlack"
+            android:textSize="16sp"
+            android:drawableEnd="@{titleDrawableEnd}"
+            android:onClick="@{onTitleClick}"
+            android:text="@{title}"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/rightBtn"
+            android:layout_gravity="end"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:scaleType="centerInside"
+            android:background="@drawable/toolbar_right_btn_bg" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+</layout>

@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: com.hanks:lineheightedittext-library:1.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/82dab86db09932c3c0771f7686ad49b9/jetified-lineheightedittext-library-1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/82dab86db09932c3c0771f7686ad49b9/jetified-lineheightedittext-library-1.0/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.hanks/lineheightedittext-library/1.0/a01a079371d7a02623e30beef3e0d63f7c0f27c1/lineheightedittext-library-1.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.hanks/lineheightedittext-library/1.0/f598d861b137f97d5e115f4621408314b7327508/lineheightedittext-library-1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

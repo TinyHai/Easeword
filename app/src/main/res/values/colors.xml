@@ -4,5 +4,19 @@
     <color name="colorPrimaryDark">#F4F4F7</color>
     <color name="colorAccent">#333333</color>
 
-    <color name="colorStartText">#222222</color>
+    <color name="colorCommonBlack">#222222</color>
+    <color name="colorChapterPreview">#666666</color>
+    <color name="colorLockedText">#CCCCCC</color>
+    <color name="colorSelectedText">#FFFFFF</color>
+    <color name="colorNormalText">#666666</color>
+    <color name="colorOrange">#FBB939</color>
+    <color name="colorDashLine">#66cccccc</color>
+    <color name="colorSearchHint">#CCCCCCCC</color>
+    <color name="colorRedDelete">#FF5B5A</color>
+
+    <color name="colorDarkLight">#EFEFEF</color>
+    <color name="colorYellowCircle">#66FBB929</color>
+    <color name="colorRedCircle">#66F24645</color>
+    <color name="colorBlueCircle">#663391FF</color>
+    <color name="colorSearchCountText">#CC888888</color>
 </resources>

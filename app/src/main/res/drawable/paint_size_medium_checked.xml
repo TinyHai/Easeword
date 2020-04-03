@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/checked_ring" />
+    <item android:drawable="@drawable/paint_size_medium_normal" />
+</layer-list>

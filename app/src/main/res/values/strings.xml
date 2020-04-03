@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">易字</string>
+    <string name="default_catalog_text">未选择</string>
+    <string name="catalog_text">第%d章</string>
+    <string name="check_update">检测更新</string>
+    <string name="feedback">反馈建议</string>
+    <string name="about_us">关于我们</string>
+    <string name="setting">设置</string>
+    <string name="about_us_note">小小团队，二人之力\n制作不易，多多包涵</string>
+    <string name="start_date">2020/03/04</string>
+    <string name="about_engineer_info">工程师：TinyHai\n1035908357@qq.com</string>
+    <string name="your_contact_hint">您的联系方式</string>
+    <string name="your_feedback_hint">劳驾您宝贵的建议或者批评</string>
+    <string name="send">发送</string>
+    <string name="in_development">该功能正在开发中</string>
+    <string name="save_fail">保存失败！</string>
+    <string name="no_essay_tip">暂无内容，点击下方按钮添加</string>
+    <string name="detail">详情</string>
+    <string name="delete">删除</string>
+    <string name="delete_success">删除成功！</string>
+    <string name="image_lost">图片不见了</string>
+    <string name="save_success">保存成功!</string>
+    <string name="saving">正在保存…</string>
+    <string name="note_text_count_with_limit">字符数: %d/222</string>
+    <string name="note_size_zero">字符数: 0/222</string>
+    <string name="no_neet_save">没有可保存的内容</string>
+    <string name="note">文本</string>
+    <string name="undo">撤销</string>
+    <string name="search_count_text_zero">搜索到0个结果</string>
+    <string name="search_count_text">搜索到%d个结果</string>
 </resources>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.activity.PaintActivity">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="cn.tyhyh.easeword.ui.viewmodel.PaintViewModel" />
+        <variable
+            name="canUndo"
+            type="Boolean" />
+        <variable
+            name="canRedo"
+            type="Boolean" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark">
+
+        <include
+            android:id="@+id/toolbarBinding"
+            layout="@layout/common_toolbar" />
+
+        <TextView
+            android:id="@+id/wordTv"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:lineHeight="103dp"
+            android:textSize="96sp"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="-24dp"
+            tools:text="天"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="26dp" />
+
+        <com.rm.freedrawview.FreeDrawView
+            android:padding="12dp"
+            android:id="@+id/freeDrawView"
+            tools:layout_marginHorizontal="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/paint_bg"
+            android:enabled="false"
+            app:paintAlpha="255"
+            app:paintColor="@android:color/black"
+            app:paintWidth="5dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:paddingHorizontal="21dp"
+            android:gravity="center_vertical">
+
+            <ImageButton
+                android:id="@+id/undoBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/paint_undo"
+                android:background="@android:color/transparent"
+                android:enabled="@{canUndo, default=false}"/>
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="match_parent" />
+            <ImageButton
+                android:id="@+id/redoBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/paint_redo"
+                android:background="@android:color/transparent"
+                android:enabled="@{canRedo, default=false}"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:textColor="@color/colorCommonBlack"
+                android:alpha="0.2"
+                android:layout_weight="1"
+                android:text="@string/app_name"/>
+
+            <RadioGroup
+                android:id="@+id/paintSizeRg"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:checkedButton="@={viewModel.checkedPaintSizeRb}">
+
+                <RadioButton
+                    android:id="@+id/paintSmallRb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/PaintSizeSmallRadioStyle"
+                    tools:checked="true"/>
+                <RadioButton
+                    android:id="@+id/paintMediumRb"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/PaintSizeMediumRadioStyle"/>
+                <RadioButton
+                    android:id="@+id/paintLargeRb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/PaintSizeLargeRadioStyle" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

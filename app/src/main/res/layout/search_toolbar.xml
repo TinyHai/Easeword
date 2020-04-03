@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolBarHeight"
+        app:contentInsetStart="0dp"
+        app:contentInsetLeft="0dp"
+        app:layout_scrollFlags="enterAlways"
+        android:background="@color/colorPrimaryDark"
+        tools:background="@color/colorPrimaryDark">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/leftBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:scaleType="centerInside"
+            android:background="@drawable/toolbar_left_btn_bg" />
+
+        <Space
+            android:layout_width="24dp"
+            android:layout_height="match_parent" />
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:queryHint="请输入单个汉字"
+            app:searchIcon="@drawable/ic_search_hint"
+            android:background="@drawable/toolbar_right_btn_bg"
+            app:iconifiedByDefault="false"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+</layout>
+

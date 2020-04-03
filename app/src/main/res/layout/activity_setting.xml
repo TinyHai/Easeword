@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cn.tyhyh.easeword.ui.custom.DynamicBgLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.activity.SettingActivity"
+    android:id="@+id/dynamicBgContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimaryDark"
+    app:moveSpeed="2dp"
+    app:drawOffsetTop="@dimen/toolBarHeight">
+
+    <include
+        android:id="@+id/toolbarBinding"
+        layout="@layout/common_toolbar" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="60"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            app:srcCompat="@mipmap/logo"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:minHeight="12dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sizeNormalText"
+            android:textColor="@color/colorCommonBlack"
+            android:text="@string/app_name"/>
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="84"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/checkUpdateBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/transparent_btn_bg"
+            android:textAllCaps="false"
+            android:text="@string/check_update"
+            android:textSize="@dimen/sizeNormalText"
+            android:textColor="@color/colorCommonBlack" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:minHeight="40dp"/>
+        <TextView
+            android:id="@+id/feedbackBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/feedback"
+            android:background="@drawable/transparent_btn_bg"
+            android:textSize="@dimen/sizeNormalText"
+            android:textColor="@color/colorCommonBlack"
+            android:textAllCaps="false" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:minHeight="40dp"/>
+        <TextView
+            android:id="@+id/aboutUsBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/about_us"
+            android:textSize="@dimen/sizeNormalText"
+            android:textColor="@color/colorCommonBlack"
+            android:background="@drawable/transparent_btn_bg" />
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="304"/>
+
+</cn.tyhyh.easeword.ui.custom.DynamicBgLinearLayout>

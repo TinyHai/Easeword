@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cn.tyhyh.easeword.ui.custom.SlideFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:clipChildren="false"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@drawable/item_detail_slide_bg">
+
+    <TextView
+        android:id="@+id/deleteBtn"
+        android:layout_width="78dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textColor="@color/colorRedDelete"
+        android:text="@string/delete"
+        android:textSize="16sp"
+        android:layout_gravity="end"
+        android:background="@android:color/transparent"/>
+
+    <TextView
+        android:id="@+id/noteTv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingVertical="12dp"
+        android:paddingHorizontal="16dp"
+        android:textSize="12sp"
+        android:gravity="start|center_horizontal"
+        android:textColor="@color/colorCommonBlack"
+        android:background="@drawable/item_detail_content_bg"
+        tools:visibility="visible"/>
+
+</cn.tyhyh.easeword.ui.custom.SlideFrameLayout>

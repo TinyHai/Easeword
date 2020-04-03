@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/noEssayContainer"
+    android:layout_width="70dp"
+    android:layout_height="70dp"
+    tools:background="@color/colorPrimaryDark">
+
+    <View
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/item_word_behind_bg"/>
+
+    <TextView
+        android:id="@+id/wordText"
+        android:layerType="software"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:textSize="40sp"
+        android:textColor="@color/colorCommonBlack"
+        android:background="@drawable/item_word_front_bg"
+        tools:text="地"/>
+
+</FrameLayout>

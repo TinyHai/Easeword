@@ -1,2 +1,2 @@
 rootProject.name='易字'
-include ':app'
+include ':app', ':freedrawview'

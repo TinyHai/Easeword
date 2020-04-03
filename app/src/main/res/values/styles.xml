@@ -11,4 +11,14 @@
     <style name="AppThemeNoToolBar.SplashActivityTheme" parent="AppThemeNoToolBar" >
         <item name="android:windowFullscreen">true</item>
     </style>
+
+    <style name="PaintSizeSmallRadioStyle" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/paint_size_small_bg</item>
+    </style>
+    <style name="PaintSizeMediumRadioStyle" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/paint_size_medium_bg</item>
+    </style>
+    <style name="PaintSizeLargeRadioStyle" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/paint_size_large_bg</item>
+    </style>
 </resources>
