@@ -3,24 +3,16 @@ package cn.tyhyh.easeword.ui.adapter
 import android.app.Activity
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import cn.tyhyh.easeword.R
 import cn.tyhyh.easeword.data.entity.Essay
-import cn.tyhyh.easeword.databinding.ItemDetailDrawingBinding
-import cn.tyhyh.easeword.databinding.ItemDetailNoteBinding
-import cn.tyhyh.easeword.ui.activity.NoteActivity
-import cn.tyhyh.easeword.ui.activity.PaintActivity
+import cn.tyhyh.easeword.ui.adapter.item.Callback
+import cn.tyhyh.easeword.ui.adapter.item.DrawingItem
+import cn.tyhyh.easeword.ui.adapter.item.NoteItem
 import cn.tyhyh.easeword.ui.viewmodel.DetailViewModel
-import cn.tyhyh.easeword.util.FontUtil
-import cn.tyhyh.easeword.util.ImageUtil
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.item_detail_drawing.view.*
 
 /**
  * author: tiny
@@ -29,7 +21,7 @@ import kotlinx.android.synthetic.main.item_detail_drawing.view.*
 class DetailAdapter(
     private val activity: Activity,
     private val viewModel: DetailViewModel
-) : ListAdapter<Essay, RecyclerView.ViewHolder>(DIFF_CALLBACK) {
+) : CommonRcvListAdapter<Essay>(DIFF_CALLBACK), Callback {
 
     companion object {
 
@@ -53,7 +45,7 @@ class DetailAdapter(
         rv = recyclerView
     }
 
-    private val snackBar by lazy { 
+    private val snackBar by lazy {
         Snackbar.make(rv, "", Snackbar.LENGTH_SHORT).apply {
             addCallback(object : Snackbar.Callback() {
                 override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
@@ -80,73 +72,36 @@ class DetailAdapter(
             }.show()
     }
 
-    class DetailDrawingViewHolder(val binding: ItemDetailDrawingBinding) : RecyclerView.ViewHolder(binding.root)
-
-    class DetailNoteViewHolder(val binding: ItemDetailNoteBinding) : RecyclerView.ViewHolder(binding.root)
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return when (viewType) {
-            Essay.TYPE_DRAWING -> DetailDrawingViewHolder(
-                ItemDetailDrawingBinding.inflate(
-                    LayoutInflater.from(parent.context),
-                    parent,
-                    false
-                )
-            )
-            Essay.TYPE_NOTE -> DetailNoteViewHolder(
-                ItemDetailNoteBinding.inflate(
-                    LayoutInflater.from(parent.context),
-                    parent,
-                    false
-                ).also { FontUtil.setTypefaceForTextView(it.noteTv, FontUtil.YRDZS_PATH) }
-            )
-            else -> throw IllegalArgumentException("viewType = $viewType is invalid")
-        }
+    override fun getItemType(data: Essay): Int {
+        return data.type
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val essay = getItem(position)
-        when (holder) {
-            is DetailDrawingViewHolder -> {
-                holder.apply {
-                    binding.deleteBtn.setOnClickListener {
-                        Log.d(TAG, this.toString())
-                        removeItem(adapterPosition)
-                    }
-                    binding.root.drawingIv.setOnClickListener {
-                        PaintActivity.actionStart(activity, viewModel.getWordId(), essay.id)
-                    }
-                    ImageUtil.setImage(binding.drawingIv, essay.content)
-                }
-            }
-            is DetailNoteViewHolder -> {
-                holder.apply {
-                    binding.deleteBtn.setOnClickListener {
-                        Log.d(TAG, this.toString())
-                        removeItem(adapterPosition)
-                    }
-                    binding.noteTv.setOnClickListener {
-                        NoteActivity.actionStart(activity, viewModel.getWordId(), essay.id)
-                    }
-                    binding.noteTv.text = essay.content
-                }
-            }
-        }
+    override fun getCurrentWordId(): Long {
+        return viewModel.getWordId()
     }
 
-    override fun getItemViewType(position: Int): Int {
-        val essayPair = getItem(position)
-        return essayPair.type
-    }
-
-    private fun removeItem(position: Int) {
+    override fun removeItem(adapterPosition: Int) {
         val oldContent = ArrayList(currentList)
         val undo = {
             submitList(oldContent)
         }
         val newList = ArrayList(oldContent)
-        val removed = newList.removeAt(position)
+        val removed = newList.removeAt(adapterPosition)
         submitList(newList)
-        handleDelete(removed, position, undo)
+        handleDelete(removed, adapterPosition, undo)
+    }
+
+    override fun createCommonItem(viewType: Any): CommonItem<Essay> {
+        return when (viewType) {
+            Essay.TYPE_DRAWING -> {
+                DrawingItem(activity, this)
+            }
+            Essay.TYPE_NOTE -> {
+                NoteItem(activity, this)
+            }
+            else -> {
+                throw IllegalArgumentException("viewType = $viewType is invalid")
+            }
+        }
     }
 }
