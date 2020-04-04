@@ -42,7 +42,7 @@ class DetailActivity : BaseActivity() {
         binding.lifecycleOwner = this
         viewModel.setWordId(wordId)
         binding.addEssayBtn.setOnClickListener { _ ->
-            viewModel.contraryFabStatus()
+            viewModel.reverseFabStatus()
         }
         binding.addDrawing.let { fab ->
             fab.setOnClickListener {

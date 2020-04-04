@@ -16,7 +16,6 @@ import cn.tyhyh.easeword.R
 import cn.tyhyh.easeword.databinding.ActivityMainBinding
 import cn.tyhyh.easeword.ui.activity.base.BaseActivity
 import cn.tyhyh.easeword.ui.adapter.ChapterAdapter
-import cn.tyhyh.easeword.ui.fragment.MainFragment
 import cn.tyhyh.easeword.ui.itemdecoration.SpaceItemDecoration
 import cn.tyhyh.easeword.ui.viewmodel.MainViewModel
 import cn.tyhyh.easeword.util.InjectorUtil
@@ -39,11 +38,11 @@ class MainActivity : BaseActivity() {
     }
 
     private val mainFragment by lazy {
-        MainFragment.newInstance()
+        supportFragmentManager.findFragmentById(R.id.wordFragment)!!
     }
 
     private val chapterAdapter by lazy {
-        ChapterAdapter(this, viewModel)
+        ChapterAdapter(viewModel)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -123,23 +122,14 @@ class MainActivity : BaseActivity() {
         if (mainFragment.isVisible) {
             return
         }
-        supportFragmentManager.apply {
-            val transaction = beginTransaction()
-            if (mainFragment.isAdded && mainFragment.isHidden) {
-                transaction.show(mainFragment)
-            } else {
-                transaction.replace(R.id.wordFragContainer, mainFragment)
-            }
-            transaction.commit()
-        }
+        supportFragmentManager.beginTransaction().show(mainFragment).commit()
     }
 
     private fun hideMainFragment() {
-        if (mainFragment.isVisible) {
-            supportFragmentManager.apply {
-                beginTransaction().hide(mainFragment).commit()
-            }
+        if (mainFragment.isHidden) {
+            return
         }
+        supportFragmentManager.beginTransaction().hide(mainFragment).commit()
     }
 
     private fun rollUpCatalog() {
@@ -158,14 +148,14 @@ class MainActivity : BaseActivity() {
         binding.catalogDrawingEnd = getDrawable(R.mipmap.icon_roll_up)
     }
 
-    private fun setupSupportActionBar(title: String? = null) {
+    private fun setupSupportActionBar() {
         binding.toolbarBinding.apply {
             leftBtn.setImageDrawable(getDrawable(R.drawable.ic_set))
             rightBtn.setImageDrawable(getDrawable(R.drawable.ic_search))
             leftBtn.setOnClickListener { SettingActivity.actionStart(this@MainActivity) }
             rightBtn.setOnClickListener { SearchActivity.actonStart(this@MainActivity) }
         }
-        binding.catalogDrawingEnd = getDrawable(R.mipmap.icon_roll_up)
+        binding.catalogDrawingEnd = getDrawable(R.mipmap.icon_roll_down)
         setSupportActionBar(binding.toolbarBinding.toolbar)
         val actonBar = supportActionBar ?: return
         actonBar.title = null
