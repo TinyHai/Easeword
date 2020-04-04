@@ -58,6 +58,7 @@ class MainViewModel(
         if (selectedChapter != null) {
             selectChapter.postValue(selectedChapter)
         }
+        isCatalogRollUp.postValue(true)
         isRefreshing.postValue(false)
     }
 

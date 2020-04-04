@@ -54,7 +54,7 @@ class EssayPreviewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     )
                     textSize = 10f
                     setTextColor(ContextCompat.getColor(context, R.color.colorNormalText))
-                    setLineSpacing(DisplayUtil.dp2px(6).toFloat(), 1f)
+                    setLineSpacing(DisplayUtil.sp2px(6).toFloat(), 1f)
                     maxLines = 3
                     gravity = Gravity.CENTER_HORIZONTAL or Gravity.TOP
                 }

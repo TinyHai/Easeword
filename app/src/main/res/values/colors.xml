@@ -6,7 +6,7 @@
 
     <color name="colorCommonBlack">#222222</color>
     <color name="colorChapterPreview">#666666</color>
-    <color name="colorLockedText">#CCCCCC</color>
+    <color name="colorDark">#CCCCCC</color>
     <color name="colorSelectedText">#FFFFFF</color>
     <color name="colorNormalText">#666666</color>
     <color name="colorOrange">#FBB939</color>

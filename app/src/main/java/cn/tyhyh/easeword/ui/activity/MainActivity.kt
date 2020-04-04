@@ -115,7 +115,6 @@ class MainActivity : BaseActivity() {
                 rollUpCatalog()
             } else {
                 rollDownCatalog()
-                hideMainFragment()
             }
         })
     }
@@ -144,16 +143,16 @@ class MainActivity : BaseActivity() {
     }
 
     private fun rollUpCatalog() {
-        if (rollUpAnimation.hasStarted() and !rollUpAnimation.hasEnded()) {
-            rollUpAnimation.cancel()
+        if (rollDownAnimation.hasStarted() and !rollDownAnimation.hasEnded()) {
+            rollDownAnimation.cancel()
         }
         binding.chapterContainer.startAnimation(rollUpAnimation)
         binding.catalogDrawingEnd = getDrawable(R.mipmap.icon_roll_down)
     }
 
     private fun rollDownCatalog() {
-        if (rollDownAnimation.hasStarted() and !rollDownAnimation.hasEnded()) {
-            rollDownAnimation.cancel()
+        if (rollUpAnimation.hasStarted() and !rollUpAnimation.hasEnded()) {
+            rollUpAnimation.cancel()
         }
         binding.chapterContainer.startAnimation(rollDownAnimation)
         binding.catalogDrawingEnd = getDrawable(R.mipmap.icon_roll_up)

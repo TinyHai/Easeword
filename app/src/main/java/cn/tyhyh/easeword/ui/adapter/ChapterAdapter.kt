@@ -122,7 +122,7 @@ class ChapterAdapter(
             if (lockedView.isInvisible) {
                 lockedView.visibility = View.VISIBLE
             }
-            previewText.setTextColor(ContextCompat.getColor(context, R.color.colorLockedText))
+            previewText.setTextColor(ContextCompat.getColor(context, R.color.colorDark))
         }
     }
 
