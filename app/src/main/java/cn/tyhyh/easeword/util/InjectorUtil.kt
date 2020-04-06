@@ -20,7 +20,7 @@ object InjectorUtil {
 
     fun getFeedbackModelFactory() = FeedbackModelFactory()
 
-    fun getPaintModelFactory() = PaintModelFactory(getWordRepository(), getApplication())
+    fun getPaintModelFactory() = DrawingModelFactory(getWordRepository(), getApplication())
 
     fun getDetailModelFactory() = DetailModelFactory(getWordRepository())
 
