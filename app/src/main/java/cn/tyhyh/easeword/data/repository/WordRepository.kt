@@ -6,7 +6,7 @@ import cn.tyhyh.easeword.data.db.WordDao
 import cn.tyhyh.easeword.data.entity.Essay
 import cn.tyhyh.easeword.data.entity.Word
 
-class WordRepository private constructor(
+open class WordRepository private constructor(
     private val wordDao: WordDao,
     private val essayDao: EssayDao
 ) {
@@ -27,8 +27,6 @@ class WordRepository private constructor(
     fun getWordById(wordId: Long, isEager: Boolean = false) = wordDao.getWord(wordId, isEager)
 
     fun getEssayById(essayId: Long, isEager: Boolean = false) = essayDao.getEssayById(essayId, isEager)
-
-    fun getEssayListByWordId(wordId: Long, isEager: Boolean = false) = essayDao.getEssayListByWordId(wordId, isEager)
 
     fun saveOrUpdateEssay(essay: Essay?): Boolean {
         if (essay != null) {
@@ -57,8 +55,6 @@ class WordRepository private constructor(
         essayDao.deleteEssays(essays)
         essayListeners.forEach { it.onDeleteCollection(essays) }
     }
-
-    fun findWordByText(word: String, isEager: Boolean = false) = wordDao.findWordListByText(word, isEager)
 
     fun findWordByWordOrContent(content: String, isEager: Boolean = false): List<Word> {
         val wordIdArray = findWordIdArrayByContent(content).also { Log.d(TAG, it.contentToString()) }

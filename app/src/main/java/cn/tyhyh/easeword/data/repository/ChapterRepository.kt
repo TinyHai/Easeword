@@ -5,7 +5,7 @@ import cn.tyhyh.easeword.data.db.DataDao
 import cn.tyhyh.easeword.data.entity.Chapter
 import cn.tyhyh.easeword.data.entity.Data
 
-class ChapterRepository private constructor(
+open class ChapterRepository private constructor(
     private val dataDao: DataDao,
     private val chapterDao: ChapterDao
 ) {
