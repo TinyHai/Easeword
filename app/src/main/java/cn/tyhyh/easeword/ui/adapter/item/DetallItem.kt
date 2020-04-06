@@ -10,7 +10,7 @@ import cn.tyhyh.easeword.data.entity.Essay
 import cn.tyhyh.easeword.databinding.ItemDetailDrawingBinding
 import cn.tyhyh.easeword.databinding.ItemDetailNoteBinding
 import cn.tyhyh.easeword.ui.activity.NoteActivity
-import cn.tyhyh.easeword.ui.activity.PaintActivity
+import cn.tyhyh.easeword.ui.activity.DrawingActivity
 import cn.tyhyh.easeword.ui.adapter.CommonRcvListAdapter
 import cn.tyhyh.easeword.util.FontUtil
 import cn.tyhyh.easeword.util.ImageUtil
@@ -38,7 +38,7 @@ class DrawingItem(private val activity: Activity, private val callback: Callback
 
     override fun bindData(data: Essay) {
         binding.root.drawingIv.setOnClickListener {
-            PaintActivity.actionStart(activity, callback.getCurrentWordId(), data.id)
+            DrawingActivity.actionStart(activity, callback.getCurrentWordId(), data.id)
         }
         ImageUtil.setImage(binding.drawingIv, data.content)
     }
@@ -71,6 +71,6 @@ class NoteItem(private val activity: Activity, private val callback: Callback) :
         binding.deleteBtn.setOnClickListener {
             callback.removeItem(holder.adapterPosition)
         }
-        FontUtil.setTypefaceForTextView(binding.noteTv, FontUtil.YRDZS_PATH)
+        FontUtil.setTypefaceForTextView(binding.noteTv, FontUtil.YRDZS)
     }
 }

@@ -1,7 +1,6 @@
 package cn.tyhyh.easeword.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,6 +51,11 @@ class MainFragment : Fragment() {
         }
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        retainInstance = true
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         configRecyclerView(binding.wordRecyclerView)
@@ -74,7 +78,6 @@ class MainFragment : Fragment() {
             viewModel.setSelectedChapter(it)
         })
         viewModel.wordList.observe(this, Observer {
-            Log.d(TAG, it.toString())
             wordAdapter.submitList(it)
         })
     }

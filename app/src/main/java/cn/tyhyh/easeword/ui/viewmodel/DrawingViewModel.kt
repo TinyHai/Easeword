@@ -23,7 +23,7 @@ import java.util.*
  * author: tiny
  * created on: 20-3-23 下午9:16
  */
-class PaintViewModel(
+class DrawingViewModel(
     private val wordRepository: WordRepository,
     application: Application
 ) : AndroidViewModel(application) {
@@ -110,14 +110,14 @@ class PaintViewModel(
             viewModelScope.launch(Dispatchers.IO) {
                 val essay = wordRepository.getEssayById(essayId)
                 if (essay != null) {
-                    this@PaintViewModel.essay.postValue(essay)
+                    this@DrawingViewModel.essay.postValue(essay)
                 }
             }
         } else null
         viewModelScope.launch(Dispatchers.IO) {
             val word = wordRepository.getWordById(wordId)
             if (word != null) {
-                this@PaintViewModel.word.postValue(word)
+                this@DrawingViewModel.word.postValue(word)
                 getEssayJob?.join()
                 essay.value?.word = word
             }

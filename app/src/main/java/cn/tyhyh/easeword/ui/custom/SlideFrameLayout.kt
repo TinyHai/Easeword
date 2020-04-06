@@ -178,7 +178,7 @@ class SlideFrameLayout @JvmOverloads constructor(
                 } else {
                     slideHelper.autoTranslateFinish()
                 }
-
+                velocityTracker.clear()
                 consume = true
             }
             MotionEvent.ACTION_CANCEL -> {
@@ -187,6 +187,7 @@ class SlideFrameLayout @JvmOverloads constructor(
                 if (!slideHelper.isMenuClosed()) {
                     slideHelper.translateToClosed()
                 }
+                velocityTracker.clear()
             }
         }
 

@@ -1,6 +1,7 @@
 package cn.tyhyh.easeword.ui.viewmodel
 
 import androidx.lifecycle.*
+import cn.tyhyh.easeword.data.db.EaseWordDB
 import cn.tyhyh.easeword.data.entity.Chapter
 import cn.tyhyh.easeword.data.entity.Data
 import cn.tyhyh.easeword.data.entity.Essay
@@ -35,6 +36,8 @@ class MainViewModel(
         emit(result)
     }.also { it.observeForever(this) } as MutableLiveData
 
+    private var maxUnlockedChapterId: Long = EaseWordDB.INVALID_ID
+
     private var unlockedChapterCount: Int = 0
 
     val isCatalogRollUp = MutableLiveData<Boolean>()
@@ -51,6 +54,7 @@ class MainViewModel(
             return@launch
         }
         unlockedChapterCount = data.unlockedCount
+        maxUnlockedChapterId = chapterRepository.getMaxChapterIdInLimit(data.id, unlockedChapterCount)
         val chapters = chapterRepository.getChapterListByDataId(data.id)
         chapterList.postValue(chapters)
         val selectedChapterId = chapterRepository.getLastSelectedChapterId()
@@ -58,16 +62,18 @@ class MainViewModel(
         if (selectedChapter != null) {
             selectChapter.postValue(selectedChapter)
         }
-        isCatalogRollUp.postValue(true)
         isRefreshing.postValue(false)
     }
 
     fun reverseCatalogStatus() {
-        isCatalogRollUp.value = isCatalogRollUp.value?.not() ?: true
+        isCatalogRollUp.value = isCatalogRollUp.value?.not() ?: false
     }
 
     fun setSelectedChapter(chapter: Chapter) {
-        selectChapter.value = chapter
+        val oldChapter = selectChapter.value
+        if (oldChapter?.id != chapter.id) {
+            selectChapter.value = chapter
+        }
     }
 
     fun saveLastSelectedChapterId(chapter: Chapter?) {
@@ -75,7 +81,9 @@ class MainViewModel(
         chapterRepository.saveLastSelectedChapterId(chapterId)
     }
 
-    fun getUnlockChapterCount() = unlockedChapterCount
+    fun getMaxUnlockedChapterId() = maxUnlockedChapterId
+
+    fun getUnlockedChapterCount() = unlockedChapterCount
 
     @Suppress("SameParameterValue")
     private fun unlockNextWordIfNeed(updatedWordId: Long) {
@@ -98,7 +106,7 @@ class MainViewModel(
         if (unlockedWordCount == totalWord) {
             val unlockedChapterCount = data.unlockedCount
             val totalChapter = chapterRepository.countChapterByWordId(data.id)
-            if (totalChapter == unlockedChapterCount) {
+            if (totalChapter <= unlockedChapterCount) {
                 return
             }
             val maxUnlockedChapterId = chapterRepository.getMaxChapterIdInLimit(data.id, unlockedChapterCount)
@@ -118,10 +126,6 @@ class MainViewModel(
     fun load() {
         val data = data.value ?: return
         loadDataInOrder(data)
-    }
-
-    fun reLoad() {
-        isRefreshing.postValue(true)
     }
 
     override fun onChanged(t: Data?) {

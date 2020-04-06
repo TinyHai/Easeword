@@ -54,7 +54,7 @@ class ChapterItem(private val callback: CallBack) : CommonRcvListAdapter.CommonI
     }
 
     override fun initViews(holder: RecyclerView.ViewHolder) {
-        FontUtil.setTypefaceForTextView(binding.previewText, FontUtil.YRDZS_PATH)
+        FontUtil.setTypefaceForTextView(binding.previewText, FontUtil.YRDZS)
     }
 
     @Suppress("SameParameterValue")

@@ -10,7 +10,6 @@ import android.text.TextWatcher
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
-import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -39,10 +38,10 @@ class NoteActivity : BaseActivity() {
     }
 
     private val wordId
-        get() = intent?.getLongExtra(WORD_ID, EaseWordDB.INVALID_ID) ?: EaseWordDB.INVALID_ID
+        get() = intent.getLongExtra(WORD_ID, EaseWordDB.INVALID_ID)
 
     private val essayId
-        get() = intent.getLongExtra(ESSAY_ID, EaseWordDB.INVALID_ID) ?: EaseWordDB.INVALID_ID
+        get() = intent.getLongExtra(ESSAY_ID, EaseWordDB.INVALID_ID)
 
     private val gestureDetector by lazy {
         GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
@@ -85,9 +84,8 @@ class NoteActivity : BaseActivity() {
         binding.noteWrapper.setOnTouchListener { _, event -> gestureDetector.onTouchEvent(event)}
         binding.viewModel = viewModel
         viewModel.setWordIdAndEssayId(wordId, essayId)
-        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        FontUtil.setTypefaceForTextView(binding.contentEv, FontUtil.YRDZS_PATH)
-        FontUtil.setTypefaceForTextView(binding.wordTv, FontUtil.YRDZS_PATH)
+        FontUtil.setTypefaceForTextView(binding.contentEv, FontUtil.YRDZS)
+        FontUtil.setTypefaceForTextView(binding.wordTv, FontUtil.SWJZ)
         setupSupportActionBar()
         observe()
     }
@@ -110,7 +108,7 @@ class NoteActivity : BaseActivity() {
             when (saving) {
                 false -> {
                     ToastUtil.showShortToast(R.string.save_success)
-                    setResult(Activity.RESULT_OK, Intent().also { it.putExtra(WORD_ID, wordId) })
+                    binding.root.postDelayed({ onBackPressed() }, 1000)
                 }
                 null -> {
                     ToastUtil.showShortToast(R.string.save_fail)
@@ -137,7 +135,7 @@ class NoteActivity : BaseActivity() {
             rightBtn.setOnClickListener {
                 val needSave = viewModel.saveNote()
                 if (!needSave) {
-                    ToastUtil.showShortToast(R.string.no_neet_save)
+                    onBackPressed()
                 }
             }
             rightBtn.isEnabled = false

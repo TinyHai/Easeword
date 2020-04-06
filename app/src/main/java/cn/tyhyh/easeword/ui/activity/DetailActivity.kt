@@ -46,7 +46,7 @@ class DetailActivity : BaseActivity() {
         }
         binding.addDrawing.let { fab ->
             fab.setOnClickListener {
-                PaintActivity.actionStart(this, wordId)
+                DrawingActivity.actionStart(this, wordId)
                 viewModel.hideTwoFab()
             }
         }
@@ -57,7 +57,7 @@ class DetailActivity : BaseActivity() {
             }
         }
         configRecyclerView(binding.essayContentRv)
-        setupSupportActionBar(getString(R.string.detail))
+        setupSupportActionBar()
         observe()
     }
 
@@ -83,6 +83,7 @@ class DetailActivity : BaseActivity() {
         })
         viewModel.word.observe(this, Observer {
             binding.toolbarBinding.rightBtn.text = it?.text
+            binding.toolbarBinding.title.text = it?.text
         })
         viewModel.showAddFab.observe(this, Observer { show ->
             if (show) {
@@ -93,12 +94,11 @@ class DetailActivity : BaseActivity() {
         })
     }
 
-    private fun setupSupportActionBar(title: String? = null) {
+    private fun setupSupportActionBar() {
         binding.toolbarBinding.apply {
             leftBtn.setImageDrawable(getDrawable(R.drawable.ic_back))
             leftBtn.setOnClickListener { onBackPressed() }
-            this.title.text = title
-            FontUtil.setTypefaceForTextView(rightBtn, FontUtil.YRDZS_PATH)
+            FontUtil.setTypefaceForTextView(rightBtn, FontUtil.SWJZ)
         }
         setSupportActionBar(binding.toolbarBinding.toolbar)
         val actonBar = supportActionBar ?: return

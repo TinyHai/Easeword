@@ -31,7 +31,13 @@ class DetailViewModel(
 
         override fun onDeleteCollection(dataCollection: Collection<Essay>) {
             super.onDeleteCollection(dataCollection)
-            reLoad()
+            val essays = essayList.value
+            if (!essays.isNullOrEmpty()) {
+                essays.removeAll(dataCollection)
+                if (essays.isEmpty()) {
+                    reLoad()
+                }
+            }
         }
     }.also { wordRepository.addEssayChangeListener(it) }
 
@@ -63,7 +69,7 @@ class DetailViewModel(
         showAddFab.value = true
     }
 
-    fun contraryFabStatus() {
+    fun reverseFabStatus() {
         showAddFab.value = showAddFab.value?.not() ?: true
     }
 

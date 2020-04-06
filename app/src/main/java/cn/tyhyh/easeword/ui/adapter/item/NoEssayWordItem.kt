@@ -33,6 +33,6 @@ class NoEssayWordItem(private val activity: Activity) : CommonRcvListAdapter.Com
     }
 
     override fun initViews(holder: RecyclerView.ViewHolder) {
-        FontUtil.setTypefaceForTextView(binding.wordText, FontUtil.YRDZS_PATH)
+        FontUtil.setTypefaceForTextView(binding.wordText, FontUtil.YRDZS)
     }
 }

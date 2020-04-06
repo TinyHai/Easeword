@@ -37,7 +37,7 @@ class HasEssayWordItem(private val activity: Activity) : CommonRcvListAdapter.Co
     }
 
     override fun initViews(holder: RecyclerView.ViewHolder) {
-        FontUtil.setTypefaceForTextView(binding.wordText, FontUtil.YRDZS_PATH)
+        FontUtil.setTypefaceForTextView(binding.wordText, FontUtil.YRDZS)
         adapter = EssayPreviewAdapter()
         binding.previewRv.adapter = adapter
     }

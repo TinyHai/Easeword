@@ -12,9 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import cn.tyhyh.easeword.GlideApp
 import cn.tyhyh.easeword.R
 import cn.tyhyh.easeword.data.db.EaseWordDB
-import cn.tyhyh.easeword.databinding.ActivityPaintBinding
+import cn.tyhyh.easeword.databinding.ActivityDrawingBinding
 import cn.tyhyh.easeword.ui.activity.base.BaseActivity
-import cn.tyhyh.easeword.ui.viewmodel.PaintViewModel
+import cn.tyhyh.easeword.ui.viewmodel.DrawingViewModel
 import cn.tyhyh.easeword.util.FontUtil
 import cn.tyhyh.easeword.util.InjectorUtil
 import cn.tyhyh.easeword.util.ToastUtil
@@ -29,12 +29,12 @@ import kotlinx.android.synthetic.main.common_toolbar.view.*
  * author: tiny
  * created on: 20-3-22 下午9:37
  */
-class PaintActivity : BaseActivity(), FreeDrawView.DrawCreatorListener {
+class DrawingActivity : BaseActivity(), FreeDrawView.DrawCreatorListener {
 
-    private lateinit var binding: ActivityPaintBinding
+    private lateinit var binding: ActivityDrawingBinding
 
     private val viewModel by lazy {
-        ViewModelProvider(this, InjectorUtil.getPaintModelFactory()).get(PaintViewModel::class.java)
+        ViewModelProvider(this, InjectorUtil.getPaintModelFactory()).get(DrawingViewModel::class.java)
     }
 
     private val wordId
@@ -45,7 +45,7 @@ class PaintActivity : BaseActivity(), FreeDrawView.DrawCreatorListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_paint)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_drawing)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         binding.freeDrawView.apply {
@@ -67,7 +67,7 @@ class PaintActivity : BaseActivity(), FreeDrawView.DrawCreatorListener {
             binding.undoBtn.setOnClickListener { undoLast() }
             binding.redoBtn.setOnClickListener { redoLast() }
         }
-        FontUtil.setTypefaceForTextView(binding.wordTv, FontUtil.YRDZS_PATH)
+        FontUtil.setTypefaceForTextView(binding.wordTv, FontUtil.SWJZ)
         viewModel.setWordIdAndEssayId(wordId, essayId)
         viewModel.setCheckedPaintSizeRb(R.id.paintSmallRb)
         setupSupportActionBar()
@@ -126,12 +126,12 @@ class PaintActivity : BaseActivity(), FreeDrawView.DrawCreatorListener {
             leftBtn.setImageDrawable(getDrawable(R.drawable.ic_back))
             rightBtn.setImageDrawable(
                 getDrawable(R.drawable.ic_yes)!!.also {
-                    it.setTint(ContextCompat.getColor(this@PaintActivity, R.color.colorOrange))
+                    it.setTint(ContextCompat.getColor(this@DrawingActivity, R.color.colorOrange))
                 }
             )
             leftBtn.setOnClickListener { onBackPressed() }
             rightBtn.setOnClickListener {
-                binding.freeDrawView.getDrawScreenshot(this@PaintActivity)
+                binding.freeDrawView.getDrawScreenshot(this@DrawingActivity)
             }
             this.title = title
         }
@@ -150,7 +150,7 @@ class PaintActivity : BaseActivity(), FreeDrawView.DrawCreatorListener {
 
     companion object {
 
-        private const val TAG = "PaintActivity"
+        private const val TAG = "DrawingActivity"
 
         private const val PAINT_SIZE_SMALL = 3f
 
@@ -171,7 +171,7 @@ class PaintActivity : BaseActivity(), FreeDrawView.DrawCreatorListener {
                 throw IllegalArgumentException("wordId = $essayId is invalid")
             }
             activity.startActivity(
-                Intent(activity, PaintActivity::class.java).also {
+                Intent(activity, DrawingActivity::class.java).also {
                     it.putExtra(WORD_ID, wordId)
                     it.putExtra(ESSAY_ID, essayId)
                 }

@@ -122,14 +122,14 @@ class MainActivity : BaseActivity() {
         if (mainFragment.isVisible) {
             return
         }
-        supportFragmentManager.beginTransaction().show(mainFragment).commit()
+        supportFragmentManager.beginTransaction().show(mainFragment).commitNow()
     }
 
     private fun hideMainFragment() {
         if (mainFragment.isHidden) {
             return
         }
-        supportFragmentManager.beginTransaction().hide(mainFragment).commit()
+        supportFragmentManager.beginTransaction().hide(mainFragment).commitNow()
     }
 
     private fun rollUpCatalog() {
