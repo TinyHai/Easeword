@@ -7,7 +7,8 @@ data class Chapter(
     var unlockedCount: Int,
     var words: ArrayList<Word>
 ) : LitePalSupport() {
-    val id: Long = 0
+    var id: Long = 0
+        private set
 
     var data: Data? = null
 

@@ -7,7 +7,8 @@ data class Word(
     var text: String,
     val essays: ArrayList<Essay>
 ) : LitePalSupport() {
-    val id: Long = 0
+    var id: Long = 0
+        private set
 
     constructor(): this(null, " ", ArrayList(0))
 }

@@ -8,7 +8,8 @@ data class Data(
     var unlockedCount: Int,
     var chapters: ArrayList<Chapter>
 ) : LitePalSupport() {
-    val id: Long = 0
+    var id: Long = 0
+        private set
 
     constructor(): this("", 1, ArrayList(0))
 }
