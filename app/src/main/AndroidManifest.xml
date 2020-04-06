@@ -22,9 +22,9 @@
         <activity android:name=".ui.activity.SettingActivity" />
         <activity android:name=".ui.activity.AboutActivity" />
         <activity android:name=".ui.activity.FeedbackActivity" />
-        <activity android:name=".ui.activity.PaintActivity" />
+        <activity android:name=".ui.activity.DrawingActivity"
+            android:screenOrientation="unspecified"/>
         <activity android:name=".ui.activity.DetailActivity" />
-        <activity android:name=".ui.activity.TestActivity" />
         <activity android:name=".ui.activity.NoteActivity" />
         <activity android:name=".ui.activity.SearchActivity" />
     </application>
