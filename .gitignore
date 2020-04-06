@@ -3,6 +3,7 @@
 /local.properties
 /idea/*
 *.jks
+/files
 .DS_Store
 /build
 /captures
