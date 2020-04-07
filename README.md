@@ -7,8 +7,9 @@
 说文解字 字体文件对应目录文件 /app/src/main/assets/fonts/swjz.ttf
 
 以下时该项目使用或借鉴的开源项目:
-[LitePal](https://github.com/LitePalFramework/LitePal)
-[Glide](https://github.com/bumptech/glide)
-[FreeDrawView](https://github.com/RiccardoMoro/FreeDrawView)
-[SwipeMenu](https://github.com/TUBB/SwipeMenu)
+[LitePal](https://github.com/LitePalFramework/LitePal)<br>
+[Glide](https://github.com/bumptech/glide)<br>
+[FreeDrawView](https://github.com/RiccardoMoro/FreeDrawView)<br>
+[SwipeMenu](https://github.com/TUBB/SwipeMenu)<br>
+[Sunflower](https://github.com/android/sunflower)<br>
 等等...
