@@ -6,7 +6,7 @@
 杨任东竹石 字体文件对应目录文件 /app/src/main/assets/fonts/yrdzs.ttf
 说文解字 字体文件对应目录文件 /app/src/main/assets/fonts/swjz.ttf
 
-以下时该项目使用或借鉴的开源项目:
+以下时该项目使用或借鉴的开源项目:<br>
 [LitePal](https://github.com/LitePalFramework/LitePal)<br>
 [Glide](https://github.com/bumptech/glide)<br>
 [FreeDrawView](https://github.com/RiccardoMoro/FreeDrawView)<br>
