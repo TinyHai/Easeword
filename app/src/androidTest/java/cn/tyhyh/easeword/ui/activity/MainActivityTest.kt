@@ -10,7 +10,6 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
 import cn.tyhyh.easeword.R
 import cn.tyhyh.easeword.util.childAtPosition
@@ -22,7 +21,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-@LargeTest
 @RunWith(AndroidJUnit4::class)
 class MainActivityTest {
 
@@ -65,7 +63,7 @@ class MainActivityTest {
                 isDisplayed()
             )
         )
-        for (i in 0..10) { // 进行单数次点击，可加大次数，确保多次点击后界面显示正常
+        for (i in 0..2) { // 进行单数次点击，可加大次数，确保多次点击后界面显示正常
             titleTv.perform(click())
         }
 
