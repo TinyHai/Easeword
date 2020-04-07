@@ -2,12 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.activity.PaintActivity">
+    tools:context=".ui.activity.DrawingActivity">
 
     <data>
         <variable
             name="viewModel"
-            type="cn.tyhyh.easeword.ui.viewmodel.PaintViewModel" />
+            type="cn.tyhyh.easeword.ui.viewmodel.DrawingViewModel" />
         <variable
             name="canUndo"
             type="Boolean" />

@@ -31,11 +31,12 @@
 
         <TextView
             android:id="@+id/titleTv"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="wrap_content"
             android:layout_gravity="center"
             android:textColor="@color/colorCommonBlack"
             android:textSize="16sp"
+            android:gravity="center_vertical"
             android:drawableEnd="@{titleDrawableEnd}"
             android:onClick="@{onTitleClick}"
             android:text="@{title}"/>

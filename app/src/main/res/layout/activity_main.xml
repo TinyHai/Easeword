@@ -44,17 +44,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <FrameLayout
-                    android:id="@+id/wordFragContainer"
+                <fragment
+                    android:id="@+id/wordFragment"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:name="cn.tyhyh.easeword.ui.fragment.MainFragment"/>
 
                 <FrameLayout
                     android:id="@+id/chapterContainer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="25dp"
-                    android:background="@drawable/main_container_bg">
+                    android:background="@drawable/main_container_bg"
+                    android:visibility="invisible">
 
 
                     <ImageView
