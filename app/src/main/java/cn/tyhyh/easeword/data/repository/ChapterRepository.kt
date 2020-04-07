@@ -27,13 +27,6 @@ open class ChapterRepository private constructor(
 
     fun getMaxChapterIdInLimit(dataId: Long, limit: Int) = chapterDao.getMaxChapterIdInLimit(dataId, limit)
 
-    private fun getData(): Data {
-        if (currentData == null) {
-            currentData = dataDao.getCurrentData()
-        }
-        return currentData!!
-    }
-
     fun getChapterById(chapterId: Long) = chapterDao.getChapterById(chapterId)
 
     fun getChapterListByDataId(dataId: Long, isEager: Boolean = false) =
@@ -48,6 +41,19 @@ open class ChapterRepository private constructor(
         }
         chapterDao.saveLastSelectedChapterId(chapterId)
     }
+
+    fun updateChapter(chapter: Chapter?) {
+        chapterDao.updateChapter(chapter)
+        chapterListeners.forEach { it.onUpdate(chapter) }
+    }
+
+    fun getLastSelectedChapterId(): Long {
+        return chapterDao.getLastSelectedChapterId()
+    }
+
+    fun updateData(data: Data?) = dataDao.updateData(data)
+
+    fun countChapterByWordId(wordId: Long) = chapterDao.countChapterByDataId(wordId)
 
     fun saveChapter(chapter: Chapter?) {
         if (chapter != null) {
@@ -66,18 +72,12 @@ open class ChapterRepository private constructor(
     fun saveOrUpdateChapter(chapter: Chapter?, vararg conditions: String) =
         chapterDao.saveOrUpdateChapter(chapter, *conditions)
 
-    fun updateChapter(chapter: Chapter?) {
-        chapterDao.updateChapter(chapter)
-        chapterListeners.forEach { it.onUpdate(chapter) }
+    private fun getData(): Data {
+        if (currentData == null) {
+            currentData = dataDao.getCurrentData()
+        }
+        return currentData!!
     }
-
-    fun getLastSelectedChapterId(): Long {
-        return chapterDao.getLastSelectedChapterId()
-    }
-
-    fun updateData(data: Data?) = dataDao.updateData(data)
-
-    fun countChapterByWordId(wordId: Long) = chapterDao.countChapterByDataId(wordId)
 
     companion object {
 
