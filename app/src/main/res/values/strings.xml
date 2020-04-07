@@ -15,7 +15,6 @@
     <string name="in_development">该功能正在开发中</string>
     <string name="save_fail">保存失败！</string>
     <string name="no_essay_tip">暂无内容，点击下方按钮添加</string>
-    <string name="detail">详情</string>
     <string name="delete">删除</string>
     <string name="delete_success">删除成功！</string>
     <string name="image_lost">图片不见了</string>
