@@ -133,6 +133,7 @@ class DrawingActivity : BaseActivity(), FreeDrawView.DrawCreatorListener {
             rightBtn.setOnClickListener {
                 binding.freeDrawView.getDrawScreenshot(this@DrawingActivity)
             }
+            rightBtn.isEnabled = false
             this.title = title
         }
         setSupportActionBar(binding.toolbarBinding.toolbar)

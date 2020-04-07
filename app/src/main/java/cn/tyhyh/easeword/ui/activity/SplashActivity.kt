@@ -2,7 +2,6 @@ package cn.tyhyh.easeword.ui.activity
 
 import android.os.Bundle
 import androidx.core.view.postDelayed
-import cn.tyhyh.easeword.data.db.EaseWordDB
 import cn.tyhyh.easeword.databinding.ActivitySplashBinding
 import cn.tyhyh.easeword.ui.activity.base.BaseActivity
 import cn.tyhyh.easeword.util.FontUtil
@@ -22,7 +21,6 @@ class SplashActivity : BaseActivity() {
     private val initialize = Runnable {
         val currentTimeMills = System.currentTimeMillis()
         val duration = currentTimeMills - startTime
-        EaseWordDB.initFromAsset()
         binding.root.postDelayed(DURING - duration) {startHomeActivity()}
     }
 

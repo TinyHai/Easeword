@@ -30,7 +30,7 @@ class DetailActivity : BaseActivity() {
     }
 
     private val wordId: Long
-        get() = intent?.getLongExtra(WORD_ID, EaseWordDB.INVALID_ID) ?: EaseWordDB.INVALID_ID
+        get() = intent.getLongExtra(WORD_ID, EaseWordDB.INVALID_ID)
 
     private val detailAdapter: DetailAdapter by lazy {
         DetailAdapter(this, viewModel)
@@ -83,7 +83,7 @@ class DetailActivity : BaseActivity() {
         })
         viewModel.word.observe(this, Observer {
             binding.toolbarBinding.rightBtn.text = it?.text
-            binding.toolbarBinding.title.text = it?.text
+            binding.toolbarBinding.titleTv.text = it?.text
         })
         viewModel.showAddFab.observe(this, Observer { show ->
             if (show) {
