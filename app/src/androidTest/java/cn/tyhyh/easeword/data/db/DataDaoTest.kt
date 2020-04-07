@@ -51,13 +51,6 @@ class DataDaoTest {
     }
 
     private fun saveEssay() {
-        val word = wordDao.getWord(1, false)
-        val essay = Essay(
-            word,
-            arrayListOf("/sdcard/Android/cn.tyhyh.easeword/cache/2020-02-01.png"),
-            arrayListOf("This is my first note")
-        )
-        essay.saveOrUpdate()
     }
 
     private fun getEssay() {
